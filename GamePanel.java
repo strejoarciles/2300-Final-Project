@@ -13,14 +13,12 @@ public class GamePanel
         frame.setSize(900,650);
         frame.setBackground(Color.BLACK);
         frame.setVisible(true);
-
-         
-
     }
 
     public static void main(String[] args)
     {
         GamePanel game = new GamePanel();
+		System.out.println("omair can also push");
         
     }
 
