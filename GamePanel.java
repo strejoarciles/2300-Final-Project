@@ -17,8 +17,8 @@ public class GamePanel extends JPanel {
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pizzaPanel, menuPanel);
         splitPane.setDividerLocation(450);
 
-        add(splitPane);
         add(drinkPanel);
         add(iceCreamPanel);
+        add(splitPane);
     }
 }
