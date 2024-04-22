@@ -36,7 +36,8 @@ public class DrinkPanel extends JPanel {
         super.paintComponent(g);
 
         // Draw drink glass
-        g.setColor(Color.GRAY);
+        g.setColor(new Color(204,229,255));
+       // g.setColor(Color.GRAY);
         g.fillRect(250, 100, 100, 200);
 
         // Draw bubbles

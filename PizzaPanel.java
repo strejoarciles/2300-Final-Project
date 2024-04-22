@@ -53,7 +53,7 @@ public class PizzaPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(new Color(255, 128, 128));
+        g.setColor(new Color(255, 204, 153));
         g.fillOval(50, 50, 300, 300);
 
         g.setColor(Color.RED);

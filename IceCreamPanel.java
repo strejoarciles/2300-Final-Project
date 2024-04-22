@@ -36,13 +36,15 @@ public class IceCreamPanel extends JPanel {
         super.paintComponent(g);
 
         // Draw ice cream cone
-        g.setColor(Color.RED);
+        g.setColor(Color.YELLOW);
         int[] xPoints = {150, 200, 250};
         int[] yPoints = {150, 250, 150};
+        g.setColor(new Color(255,204,153));
+
         g.fillPolygon(xPoints, yPoints, 3);
 
         // Draw ice cream scoop
-        g.setColor(Color.PINK);
+        g.setColor(new Color(102,51,0));//g.setColor(Color.PINK);
         g.fillOval(150, 100, 100, 75);
 
         // Draw sprinkles
