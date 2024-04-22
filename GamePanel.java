@@ -1,27 +1,24 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.JFrame;
+import javax.swing.*;
 
-public class GamePanel 
-{
-    JFrame frame;
+public class GamePanel extends JPanel {
+    private PizzaPanel pizzaPanel;
+    private MenuPanel menuPanel;
+    private DrinkPanel drinkPanel;
+    private IceCreamPanel iceCreamPanel;
 
-    GamePanel()
-    {
-        frame = new JFrame("Resturant Game");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(900,650);
-        frame.setBackground(Color.BLACK);
-        frame.setVisible(true);
+    public GamePanel() {
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+
+        pizzaPanel = new PizzaPanel();
+        drinkPanel = new DrinkPanel();
+        iceCreamPanel = new IceCreamPanel();
+        menuPanel = new MenuPanel(pizzaPanel, drinkPanel, iceCreamPanel);
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pizzaPanel, menuPanel);
+        splitPane.setDividerLocation(450);
+
+        add(splitPane);
+        add(drinkPanel);
+        add(iceCreamPanel);
     }
-
-    public static void main(String[] args)
-    {
-        GamePanel game = new GamePanel();
-		System.out.println("omair can also push");
-        
-    }
-
 }
-
-
