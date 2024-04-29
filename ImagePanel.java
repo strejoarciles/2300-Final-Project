@@ -10,7 +10,7 @@ public class ImagePanel extends JPanel {
 
     public ImagePanel() {
         try {
-            image = ImageIO.read(new File("Fritt'sPizzaria.jpg")); // Load the image from file
+            image = ImageIO.read(new File("Pizzaria.jpg")); // Load the image from file
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -23,9 +23,9 @@ public class ImagePanel extends JPanel {
         if (image != null) {
             int width = image.getWidth();
             int height = image.getHeight();
-            int desiredWidth = 300; // Set the desired width
+            int desiredWidth = 600; // Set the desired width
             int desiredHeight = (int) (height * ((double) desiredWidth / width)); // Calculate height to maintain aspect ratio
-            g.drawImage(image, 0, 0, desiredWidth, desiredHeight, null); // Draw the image at the desired size
+            g.drawImage(image, 400, 0, desiredWidth, desiredHeight, null); // Draw the image at the desired size
         }
     }
 }
