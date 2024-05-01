@@ -7,6 +7,7 @@ public class GamePanel extends JPanel {
     private DrinkPanel drinkPanel;
     private IceCreamPanel iceCreamPanel;
 
+
     public GamePanel() {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
@@ -15,8 +16,11 @@ public class GamePanel extends JPanel {
         iceCreamPanel = new IceCreamPanel();
         menuPanel = new MenuPanel(pizzaPanel, drinkPanel, iceCreamPanel);
 
+       
+
+
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, pizzaPanel, menuPanel);
-        splitPane.setDividerLocation(450);
+        splitPane.setDividerLocation(450); //450
 
         add(drinkPanel);
         add(iceCreamPanel);
