@@ -5,9 +5,9 @@ public class GameFrame extends JFrame {
     private JLabel countLabel;
 
     public GameFrame() {
-        setTitle("Fritt's Pizzaria");
+        setTitle("Fritt's Pizzeria");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 900);
+        setSize(1000, 900);
         setBackground(java.awt.Color.BLACK);
         setLayout(new BorderLayout()); // might need to get removed
 
