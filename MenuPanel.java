@@ -6,6 +6,7 @@ public class MenuPanel extends JPanel {
     private PizzaPanel pizzaPanel;
     private DrinkPanel drinkPanel;
     private IceCreamPanel iceCreamPanel;
+    private JLabel countLabel;
 
     public MenuPanel(PizzaPanel pizzaPanel, DrinkPanel drinkPanel, IceCreamPanel iceCreamPanel) {
         this.pizzaPanel = pizzaPanel;
@@ -22,6 +23,11 @@ public class MenuPanel extends JPanel {
         JButton button4 = new JButton("Bake Pizza");
         JButton button5 = new JButton("Add Bubbles");
         JButton button6 = new JButton("Add Sprinkles");
+
+        //JButton button7 = new JButton("Total Price: $ ");
+
+        String count = new String("Total Price: $");
+        countLabel = new JLabel(count);
 
         button1.addActionListener(new ActionListener() {
             @Override
@@ -65,11 +71,15 @@ public class MenuPanel extends JPanel {
             }
         });
 
+
         add(button1);
         add(button2);
         add(button3);
         add(button4);
         add(button5);
         add(button6);
+       // add(button7);
+        add(countLabel);
+
     }
 }
