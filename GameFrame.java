@@ -3,9 +3,9 @@ import java.awt.*;
 
 public class GameFrame extends JFrame {
     public GameFrame() {
-        setTitle("Fritt's Pizzaria");
+        setTitle("Fritt's Pizzeria");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 900);
+        setSize(1000, 900);
         setBackground(java.awt.Color.BLACK);
 
         GamePanel gamePanel = new GamePanel();
