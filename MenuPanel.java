@@ -78,8 +78,12 @@ public class MenuPanel extends JPanel {
         add(button4);
         add(button5);
         add(button6);
-       // add(button7);
         add(countLabel);
 
     }
+
+    public void updateRemainingGuesses(int remainingGuesses) 
+  {
+      countLabel.setText("Total Price: $ " + remainingGuesses);
+  }
 }

@@ -26,4 +26,6 @@ public class GamePanel extends JPanel {
         add(iceCreamPanel);
         add(splitPane);
     }
+
+    
 }
