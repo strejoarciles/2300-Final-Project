@@ -9,11 +9,13 @@ public class ImagePanel extends JPanel {
     private BufferedImage[] images; // Array to hold the images
 
     public ImagePanel() {
-        images = new BufferedImage[3]; // Initialize the array to hold three images
+        images = new BufferedImage[5]; // Initialize the array to hold five images
         try {
-            images[0] = ImageIO.read(new File("IceCreamDrink.jpg")); // Load the first image
-            images[1] = ImageIO.read(new File("Pizzeria.jpg")); // Load the second image
-            images[2] = ImageIO.read(new File("PizzaMenu.jpg")); // Load the third image
+            images[0] = ImageIO.read(new File("EmptySpace.jpg")); // Load the first image
+            images[1] = ImageIO.read(new File("EmptySpace.jpg")); // Load the second image
+            images[2] = ImageIO.read(new File("PizzeriaTitle.jpg")); // Load the third image
+            images[3] = ImageIO.read(new File("EmptySpace.jpg")); // Load the fourth image
+            images[4] = ImageIO.read(new File("EmptySpace.jpg")); // Load the fifth image
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -24,12 +26,22 @@ public class ImagePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         int x = 0; // Initial x-coordinate for the first image
-        for (BufferedImage image : images) {
+        for (int i = 0; i < images.length; i++) {
+            BufferedImage image = images[i];
             if (image != null) {
                 int width = image.getWidth();
                 int height = image.getHeight();
-                int desiredWidth = 300; // Set the desired width for each image
-                int desiredHeight = (int) (height * ((double) desiredWidth / width)); // Calculate height to maintain aspect ratio
+                int desiredWidth;
+                int desiredHeight;
+
+                if (i == 2) { // If it's the third image (index 2)
+                    desiredWidth = 310; // Set the desired width to 250 (slightly smaller)
+                    desiredHeight = (int) (height * ((double) desiredWidth / width)); // Calculate height to maintain aspect ratio
+                } else {
+                    desiredWidth = 300; // Set the desired width for other images
+                    desiredHeight = (int) (height * ((double) desiredWidth / width)); // Calculate height to maintain aspect ratio
+                }
+
                 g.drawImage(image, x, 0, desiredWidth, desiredHeight, null); // Draw the image at the desired size
                 x += desiredWidth; // Increment x-coordinate for the next image
             }
