@@ -11,57 +11,128 @@ public class MenuPanel extends JPanel {
         this.pizzaPanel = pizzaPanel;
         this.drinkPanel = drinkPanel;
         this.iceCreamPanel = iceCreamPanel;
-
         setPreferredSize(new Dimension(400, 400));
         setBackground(Color.LIGHT_GRAY);
-        setLayout(new GridLayout(6, 1, 10, 10));
+        setLayout(new GridLayout(19, 1, 10, 10));
 
-        JButton button1 = new JButton("Pepperoni");
-        JButton button2 = new JButton("Pineapple");
-        JButton button3 = new JButton("Veggies");
-        JButton button4 = new JButton("Bake Pizza");
-        JButton button5 = new JButton("Add Bubbles");
-        JButton button6 = new JButton("Add Sprinkles");
+        JButton button1 = new JButton("Cheese");
+        JButton button2 = new JButton("Halal Pepperoni");
+        JButton button3 = new JButton("Peppers");
+        JButton button4 = new JButton("Onions");
+        JButton button5 = new JButton("Mushrooms");
+        JButton button6 = new JButton("Pineapple");
+        JButton button7 = new JButton("Halal Sausage");
+        JButton button8 = new JButton("Spinach");
+        JButton button9 = new JButton("Add Bubbles");
+        JButton button10 = new JButton("Add Sprinkles");
+        JButton button11 = new JButton("Strawberry");
+        JButton button12 = new JButton("Chocolate");
+        JButton button13 = new JButton("Vanilla");
+        JButton button14 = new JButton("Water");
+        JButton button15 = new JButton("Fanta");
+        JButton button16 = new JButton("Coke");
+        JButton button17 = new JButton("Sprite");
 
         button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pizzaPanel.addCheeseTopping();
+            }
+        });
+        button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pizzaPanel.addPepperoniTopping();
             }
         });
-
-        button2.addActionListener(new ActionListener() {
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Add peppers topping method here
+            }
+        });
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pizzaPanel.addOnionTopping();
+            }
+        });
+        button5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pizzaPanel.addMushroomTopping();
+            }
+        });
+        button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pizzaPanel.addPineappleTopping();
             }
         });
-
-        button3.addActionListener(new ActionListener() {
+        button7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pizzaPanel.addVeggieTopping();
+                pizzaPanel.addSausageTopping();
             }
         });
-
-        button4.addActionListener(new ActionListener() {
+        button8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Bake Pizza clicked!");
+                pizzaPanel.addSpinachTopping();
             }
         });
-
-        button5.addActionListener(new ActionListener() {
+        button9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 drinkPanel.addBubbleTopping();
             }
         });
-
-        button6.addActionListener(new ActionListener() {
+        button10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 iceCreamPanel.addSprinkleTopping();
+            }
+        });
+        button11.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iceCreamPanel.setIceCreamColor(Color.PINK);
+            }
+        });
+        button12.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iceCreamPanel.setIceCreamColor(new Color(102, 51, 0));
+            }
+        });
+        button13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iceCreamPanel.setIceCreamColor(Color.YELLOW);
+            }
+        });
+         button14.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drinkPanel.setDrinkColor(Color.BLUE);
+            }
+        });
+        button15.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drinkPanel.setDrinkColor(Color.ORANGE);
+            }
+        });
+        button16.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drinkPanel.setDrinkColor(new Color(102, 51, 0));
+            }
+        });
+        button17.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drinkPanel.setDrinkColor(Color.YELLOW);
             }
         });
 
@@ -71,5 +142,16 @@ public class MenuPanel extends JPanel {
         add(button4);
         add(button5);
         add(button6);
+        add(button7);
+        add(button8);
+        add(button9);
+        add(button10);
+        add(button11);
+        add(button12);
+        add(button13);
+        add(button14);
+        add(button15);
+        add(button16);
+        add(button17);
     }
 }
