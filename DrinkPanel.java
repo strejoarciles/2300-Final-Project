@@ -6,15 +6,22 @@ import javax.swing.*;
 
 public class DrinkPanel extends JPanel {
     private List<Point> bubbleToppings;
+    private Color drinkColor;
 
     public DrinkPanel() {
         setPreferredSize(new Dimension(400, 400));
         setBackground(Color.WHITE);
         bubbleToppings = new ArrayList<>();
+        drinkColor = new Color(204, 229, 255); // Default color is light blue
     }
 
     public void addBubbleTopping() {
         addRandomToppings(bubbleToppings, 10);
+        repaint();
+    }
+
+    public void setDrinkColor(Color color) {
+        this.drinkColor = color;
         repaint();
     }
 
@@ -23,7 +30,6 @@ public class DrinkPanel extends JPanel {
         int drinkWidth = 100;
         int drinkHeight = 200;
         int toppingRadius = 5;
-
         for (int i = 0; i < count; i++) {
             int x = random.nextInt(drinkWidth - toppingRadius * 2) + 250;
             int y = random.nextInt(drinkHeight - toppingRadius * 2) + 100;
@@ -36,8 +42,7 @@ public class DrinkPanel extends JPanel {
         super.paintComponent(g);
 
         // Draw drink glass
-        g.setColor(new Color(204,229,255));
-       // g.setColor(Color.GRAY);
+        g.setColor(drinkColor);
         g.fillRect(250, 100, 100, 200);
 
         // Draw bubbles

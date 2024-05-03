@@ -6,84 +6,192 @@ public class MenuPanel extends JPanel {
     private PizzaPanel pizzaPanel;
     private DrinkPanel drinkPanel;
     private IceCreamPanel iceCreamPanel;
-    private JLabel countLabel;
+    private JLabel priceLabel;
+    private JLabel pizzaLabel;
+    private JLabel iceCreamLabel;
+    private JLabel drinkLabel;
+
 
     public MenuPanel(PizzaPanel pizzaPanel, DrinkPanel drinkPanel, IceCreamPanel iceCreamPanel) {
         this.pizzaPanel = pizzaPanel;
         this.drinkPanel = drinkPanel;
         this.iceCreamPanel = iceCreamPanel;
-
-        setPreferredSize(new Dimension(400, 400));
+        setPreferredSize(new Dimension(400, 700));
         setBackground(Color.LIGHT_GRAY);
-        setLayout(new GridLayout(6, 1, 10, 10));
+        setLayout(new GridLayout(21,2));
 
-        JButton button1 = new JButton("Pepperoni");
-        JButton button2 = new JButton("Pineapple");
-        JButton button3 = new JButton("Veggies");
-        JButton button4 = new JButton("Bake Pizza");
-        JButton button5 = new JButton("Add Bubbles");
-        JButton button6 = new JButton("Add Sprinkles");
+        JButton button1 = new JButton("Cheese");
+        JButton button2 = new JButton("Halal Pepperoni");
+        JButton button3 = new JButton("Peppers");
+        JButton button4 = new JButton("Onions");
+        JButton button5 = new JButton("Mushrooms");
+        JButton button6 = new JButton("Pineapple");
+        JButton button7 = new JButton("Halal Sausage");
+        JButton button8 = new JButton("Spinach");
+        JButton button9 = new JButton("Add Bubbles");
+        JButton button10 = new JButton("Add Sprinkles");
+        JButton button11 = new JButton("Strawberry");
+        JButton button12 = new JButton("Chocolate");
+        JButton button13 = new JButton("Vanilla");
+        JButton button14 = new JButton("Water");
+        JButton button15 = new JButton("Fanta");
+        JButton button16 = new JButton("Coke");
+        JButton button17 = new JButton("Sprite");
 
-        //JButton button7 = new JButton("Total Price: $ ");
-
+        //total price
         String count = new String("Total Price: $");
-        countLabel = new JLabel(count);
+        priceLabel = new JLabel(count);
+
+        //pizza options
+        String pizzaOption = new String("Pizza Toppings");
+        pizzaLabel= new JLabel(pizzaOption);
+
+        //drink options
+        String drinkOption = new String("Drink Options");
+        drinkLabel = new JLabel(drinkOption);
+
+
+        //ice cream options
+        String iceCreamOption = new String("Ice Cream Toppings");
+        iceCreamLabel = new JLabel(iceCreamOption);
+
+        
+
+
 
         button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pizzaPanel.addCheeseTopping();
+            }
+        });
+        button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pizzaPanel.addPepperoniTopping();
             }
         });
-
-        button2.addActionListener(new ActionListener() {
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Add peppers topping method here
+            }
+        });
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pizzaPanel.addOnionTopping();
+            }
+        });
+        button5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pizzaPanel.addMushroomTopping();
+            }
+        });
+        button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pizzaPanel.addPineappleTopping();
             }
         });
-
-        button3.addActionListener(new ActionListener() {
+        button7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pizzaPanel.addVeggieTopping();
+                pizzaPanel.addSausageTopping();
             }
         });
-
-        button4.addActionListener(new ActionListener() {
+        button8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Bake Pizza clicked!");
+                pizzaPanel.addSpinachTopping();
             }
         });
-
-        button5.addActionListener(new ActionListener() {
+        button9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 drinkPanel.addBubbleTopping();
             }
         });
-
-        button6.addActionListener(new ActionListener() {
+        button10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 iceCreamPanel.addSprinkleTopping();
             }
         });
+        button11.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iceCreamPanel.setIceCreamColor(Color.PINK);
+            }
+        });
+        button12.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iceCreamPanel.setIceCreamColor(new Color(102, 51, 0));
+            }
+        });
+        button13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iceCreamPanel.setIceCreamColor(Color.YELLOW);
+            }
+        });
+         button14.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drinkPanel.setDrinkColor(Color.BLUE);
+            }
+        });
+        button15.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drinkPanel.setDrinkColor(Color.ORANGE);
+            }
+        });
+        button16.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drinkPanel.setDrinkColor(new Color(102, 51, 0));
+            }
+        });
+        button17.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                drinkPanel.setDrinkColor(Color.YELLOW);
+            }
+        });
 
-
+        add(pizzaLabel);
         add(button1);
         add(button2);
         add(button3);
         add(button4);
         add(button5);
         add(button6);
-        add(countLabel);
+        add(button7);
+        add(button8);
+
+       add(iceCreamLabel); 
+        add(button9);
+        add(button10);
+        add(button11);
+        add(button12);
+        add(button13);
+
+        add(drinkLabel);
+        add(button14);
+        add(button15);
+        add(button16);
+        add(button17);
+
+
+        add(priceLabel);
 
     }
 
     public void updateRemainingGuesses(int remainingGuesses) 
   {
-      countLabel.setText("Total Price: $ " + remainingGuesses);
+      priceLabel.setText("Total Price: $ " + remainingGuesses);
   }
 }
