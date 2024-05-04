@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class MenuPanel extends JPanel {
+    private int totalPrice = 0;
     private PizzaPanel pizzaPanel;
     private DrinkPanel drinkPanel;
     private IceCreamPanel iceCreamPanel;
@@ -16,7 +17,7 @@ public class MenuPanel extends JPanel {
         this.pizzaPanel = pizzaPanel;
         this.drinkPanel = drinkPanel;
         this.iceCreamPanel = iceCreamPanel;
-        setPreferredSize(new Dimension(400, 700));
+        setPreferredSize(new Dimension(400, 800));
         setBackground(Color.LIGHT_GRAY);
         setLayout(new GridLayout(21,2));
 
@@ -28,7 +29,7 @@ public class MenuPanel extends JPanel {
         JButton button6 = new JButton("Pineapple");
         JButton button7 = new JButton("Halal Sausage");
         JButton button8 = new JButton("Spinach");
-        JButton button9 = new JButton("Add Bubbles");
+        JButton button9 = new JButton("Add Extra Fizz");
         JButton button10 = new JButton("Add Sprinkles");
         JButton button11 = new JButton("Strawberry");
         JButton button12 = new JButton("Chocolate");
@@ -56,7 +57,13 @@ public class MenuPanel extends JPanel {
         iceCreamLabel = new JLabel(iceCreamOption);
 
         
-
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                pizzaPanel.addPepperTopping();
+            }
+        });
 
 
         button1.addActionListener(new ActionListener() {
@@ -93,72 +100,91 @@ public class MenuPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pizzaPanel.addPineappleTopping();
+                updateTotalPrice(1);
             }
         });
         button7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pizzaPanel.addSausageTopping();
+                updateTotalPrice(1);
             }
         });
         button8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pizzaPanel.addSpinachTopping();
+                updateTotalPrice(1);
             }
         });
         button9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 drinkPanel.addBubbleTopping();
+                updateTotalPrice(1);
             }
         });
         button10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 iceCreamPanel.addSprinkleTopping();
+                updateTotalPrice(1);
             }
         });
         button11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 iceCreamPanel.setIceCreamColor(Color.PINK);
+                updateTotalPrice(3);
+
             }
         });
         button12.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 iceCreamPanel.setIceCreamColor(new Color(102, 51, 0));
+                updateTotalPrice(3);
+
             }
         });
         button13.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 iceCreamPanel.setIceCreamColor(Color.YELLOW);
+                updateTotalPrice(3);
+
             }
         });
          button14.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 drinkPanel.setDrinkColor(Color.BLUE);
+                updateTotalPrice(0);
+
             }
         });
         button15.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 drinkPanel.setDrinkColor(Color.ORANGE);
+                updateTotalPrice(2);
+
             }
         });
         button16.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 drinkPanel.setDrinkColor(new Color(102, 51, 0));
+                updateTotalPrice(2);
+
             }
         });
         button17.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 drinkPanel.setDrinkColor(Color.YELLOW);
+                updateTotalPrice(2);
+
             }
         });
 
@@ -173,13 +199,13 @@ public class MenuPanel extends JPanel {
         add(button8);
 
        add(iceCreamLabel); 
-        add(button9);
         add(button10);
         add(button11);
         add(button12);
         add(button13);
 
         add(drinkLabel);
+        add(button9);
         add(button14);
         add(button15);
         add(button16);
@@ -190,8 +216,9 @@ public class MenuPanel extends JPanel {
 
     }
 
-    public void updateRemainingGuesses(int remainingGuesses) 
+    public void updateTotalPrice(int updatePrice) 
   {
-      priceLabel.setText("Total Price: $ " + remainingGuesses);
+    totalPrice += updatePrice;
+    priceLabel.setText("Total Price: $ " + totalPrice);
   }
 }

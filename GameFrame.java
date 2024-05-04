@@ -2,14 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameFrame extends JFrame {
-    private JLabel countLabel;
 
     public GameFrame() {
-        setTitle("Fritt's Pizzeria");
+        setTitle("FRITTS' PIZZERIA");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 900);
+        //setSize(1000, 900);
+        setSize(500,500);
+
         setBackground(java.awt.Color.BLACK);
-        setLayout(new BorderLayout()); // might need to get removed
+        //setLayout(new BorderLayout()); // might need to get removed
 
        
 

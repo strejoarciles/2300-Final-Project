@@ -13,6 +13,7 @@ public class PizzaPanel extends JPanel {
     private List<Point> pineappleToppings;
     private List<Point> sausageToppings;
     private List<Point> spinachToppings;
+    private List<Point> pepperToppings;
 
     public PizzaPanel() {
         setPreferredSize(new Dimension(400, 400));
@@ -24,6 +25,13 @@ public class PizzaPanel extends JPanel {
         pineappleToppings = new ArrayList<>();
         sausageToppings = new ArrayList<>();
         spinachToppings = new ArrayList<>();
+        pepperToppings = new ArrayList<>();
+    }
+
+    public void addPepperTopping()
+    {
+        addRandomToppings(pepperToppings, 10, Color.ORANGE);
+        repaint();
     }
 
     public void addCheeseTopping() {
@@ -122,6 +130,13 @@ private void addRandomToppings(List<Point> toppings, int count, Color toppingCol
         // Draw sausage toppings
         g.setColor(new Color(204, 102, 0));
         for (Point topping : sausageToppings) {
+            g.fillOval(topping.x - 5, topping.y - 5, 10, 10);
+        }
+
+        //Draw pepper toppings
+        g.setColor(Color.ORANGE);
+        for (Point topping : pepperToppings)
+        {
             g.fillOval(topping.x - 5, topping.y - 5, 10, 10);
         }
 
