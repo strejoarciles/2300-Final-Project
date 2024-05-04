@@ -14,6 +14,7 @@ public class PizzaPanel extends JPanel {
     private List<Point> sausageToppings;
     private List<Point> spinachToppings;
     private List<Point> pepperToppings;
+    public int crustSize; //ADDED!
 
     public PizzaPanel() {
         setPreferredSize(new Dimension(400, 400));
@@ -26,7 +27,25 @@ public class PizzaPanel extends JPanel {
         sausageToppings = new ArrayList<>();
         spinachToppings = new ArrayList<>();
         pepperToppings = new ArrayList<>();
+        crustSize = 400;
     }
+
+
+    public void setSmallCrustSize() {
+        crustSize = 150; // Set the desired size for the small crust
+        repaint();
+    }
+
+    public void setMediumCrustSize() {
+        crustSize = 250; // Set the desired size for the small crust
+        repaint();
+    }
+
+    public void setLargeCrustSize() {
+        crustSize = 350; // Set the desired size for the small crust
+        repaint();
+    }
+
 
     public void addPepperTopping()
     {
@@ -69,7 +88,28 @@ public class PizzaPanel extends JPanel {
         repaint();
     }
 
-private void addRandomToppings(List<Point> toppings, int count, Color toppingColor) {
+
+    private void addRandomToppings(List<Point> toppings, int count, Color toppingColor) {
+        Random random = new Random();
+        int crustRadius = crustSize / 2; // Radius of the pizza crust
+        int sauceRadius = crustRadius - 10; // Radius of the sauce area
+        int toppingRadius = 5; // Radius of the toppings
+    
+        for (int i = 0; i < count; i++) {
+            int x = random.nextInt(sauceRadius * 2) - sauceRadius;
+            int y = random.nextInt(sauceRadius * 2) - sauceRadius;
+            if (x * x + y * y <= sauceRadius * sauceRadius) {
+                // Calculate the center coordinates based on the panel size and crust size
+                int centerX = getWidth() / 2;
+                int centerY = getHeight() / 2;
+                toppings.add(new Point(x + centerX, y + centerY));
+            } else {
+                i--;
+            }
+        }
+    }
+
+/*private void addRandomToppings(List<Point> toppings, int count, Color toppingColor) {
     Random random = new Random();
     int pizzaRadius = 150;
     int sauceRadius = 140; // Adjust this value to match the red circle radius
@@ -83,21 +123,34 @@ private void addRandomToppings(List<Point> toppings, int count, Color toppingCol
             i--;
         }
     }
-}
+}*/
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        int crustX = (getWidth() - crustSize) / 2;
+        int crustY = (getHeight() - crustSize) / 2;
+
+
         // Draw pizza crust
-        g.setColor(new Color(255, 204, 153));
-        g.fillOval(50, 50, 300, 300);
+         g.setColor(new Color(255, 204, 153));
+        g.fillOval(crustX, crustY, crustSize, crustSize);
+
+
+        // Draw pizza crust
+       //g.setColor(new Color(255, 204, 153));
+        //g.fillOval(50, 50, 300, 300);
 
         // Draw pizza sauce
         g.setColor(Color.RED);
-        g.fillOval(60, 60, 280, 280); // Increased sauce size
+        g.fillOval(crustX + 10, crustY + 10, crustSize - 20, crustSize - 20);
 
-        // Draw cheese toppings
+        /* 
+        g.setColor(Color.RED);
+        g.fillOval(60, 60, 280, 280); // Increased sauce size*/
+
+        // Draw cheese toppingss
         g.setColor(Color.WHITE);
         for (Point topping : cheeseToppings) {
             g.fillOval(topping.x - 5, topping.y - 5, 10, 10);
