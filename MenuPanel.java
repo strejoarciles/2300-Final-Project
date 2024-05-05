@@ -36,7 +36,7 @@ public class MenuPanel extends JPanel {
         this.pizzaPanel = pizzaPanel;
         this.drinkPanel = drinkPanel;
         this.iceCreamPanel = iceCreamPanel;
-        setPreferredSize(new Dimension(400, 800));
+        setPreferredSize(new Dimension(200, 400));
         setBackground(Color.LIGHT_GRAY);
         setLayout(new GridLayout(25,2));
 

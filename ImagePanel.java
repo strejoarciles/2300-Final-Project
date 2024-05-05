@@ -1,50 +1,43 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
 public class ImagePanel extends JPanel {
-    private BufferedImage[] images; // Array to hold the images
+    private BufferedImage image1;
+    private BufferedImage image2;
 
     public ImagePanel() {
-        images = new BufferedImage[5]; // Initialize the array to hold five images
         try {
-            images[0] = ImageIO.read(new File("EmptySpace.jpg")); // Load the first image
-            images[1] = ImageIO.read(new File("EmptySpace.jpg")); // Load the second image
-            images[2] = ImageIO.read(new File("PizzeriaTitle.jpg")); // Load the third image
-            images[3] = ImageIO.read(new File("EmptySpace.jpg")); // Load the fourth image
-            images[4] = ImageIO.read(new File("EmptySpace.jpg")); // Load the fifth image
+            image1 = ImageIO.read(new File("PizzaMenu.jpg"));
+            image2 = ImageIO.read(new File("IceCreamDrink.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setPreferredSize(new Dimension(600, 300)); // Set preferred size to accommodate three images
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        int x = 0; // Initial x-coordinate for the first image
-        for (int i = 0; i < images.length; i++) {
-            BufferedImage image = images[i];
-            if (image != null) {
-                int width = image.getWidth();
-                int height = image.getHeight();
-                int desiredWidth;
-                int desiredHeight;
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
 
-                if (i == 2) { // If it's the third image (index 2)
-                    desiredWidth = 310; // Set the desired width to 250 (slightly smaller)
-                    desiredHeight = (int) (height * ((double) desiredWidth / width)); // Calculate height to maintain aspect ratio
-                } else {
-                    desiredWidth = 300; // Set the desired width for other images
-                    desiredHeight = (int) (height * ((double) desiredWidth / width)); // Calculate height to maintain aspect ratio
-                }
+		if (image1 != null && image2 != null) {
+			double scaleFactor = 4.5; // Set the scale factor to 4.5
+			int width = (int) (Math.max(image1.getWidth(), image2.getWidth()) / scaleFactor);
+			int height = (int) ((image1.getHeight() + image2.getHeight()) / scaleFactor);
+			setPreferredSize(new Dimension(width, height));
 
-                g.drawImage(image, x, 0, desiredWidth, desiredHeight, null); // Draw the image at the desired size
-                x += desiredWidth; // Increment x-coordinate for the next image
-            }
-        }
-    }
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+
+			int x = (getWidth() - width) / 2;
+			int y = (getHeight() - height) / 2;
+
+			g2d.drawImage(image1, x, y, (int) (image1.getWidth() / scaleFactor), (int) (image1.getHeight() / scaleFactor), null);
+			g2d.drawImage(image2, x, y + (int) (image1.getHeight() / scaleFactor), (int) (image2.getWidth() / scaleFactor), (int) (image2.getHeight() / scaleFactor), null);
+		}
+
+	}
+
 }

@@ -17,7 +17,7 @@ public class PizzaPanel extends JPanel {
     public int crustSize; //ADDED!
 
     public PizzaPanel() {
-        setPreferredSize(new Dimension(400, 400));
+        setPreferredSize(new Dimension(350, 350));
         setBackground(Color.WHITE);
         cheeseToppings = new ArrayList<>();
         pepperoniToppings = new ArrayList<>();
